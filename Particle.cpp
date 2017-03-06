@@ -94,6 +94,9 @@ handleKeyPress (SDL_keysym * keysym)
 	case SDLK_F1:
 		SDL_WM_ToggleFullScreen (surface);
 		break;
+
+        default:
+                break;
 	}
 }
 
@@ -102,6 +105,7 @@ bool initGLDriver() {
 	driver->name = (ret (*)args)SDL_GL_GetProcAddress(#name);
 #include "GLFuncs.h"
 #undef GL_PROC
+        return true;
 }
 
 void initParticle(int i) {
@@ -151,7 +155,7 @@ drawScene (float frameTime)
 	driver->glLoadIdentity();
 
 	Matrix transform = rotationMatrix(rot += .01, 0, 1, 1).translate(0, 0, -30);
-	
+
 	for (int i = 0; i < NUM_PARTICLES; ++i) {
 		if (particle[i].liveTime > 0) {
 		    Vector pos = particle[i].pos * transform;

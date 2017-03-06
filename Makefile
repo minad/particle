@@ -1,7 +1,7 @@
 CC = g++ -O2
 
 all:
-	$(CC) *.cpp -o particle -lGLU `sdl-config --cflags --libs`
+	$(CC) -Wall *.cpp -o particle -lGLU `sdl-config --cflags --libs`
 
 clean:
 	@echo Cleaning up...
